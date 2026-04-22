@@ -8,6 +8,7 @@ s1 = 400
 s2 = 400
 kratka_ruc = 75
 dlha_ruc = 150
+polomer_cisla = dlha_ruc + 5
 hrubka_h = 3
 hrubka_s = 1
 
