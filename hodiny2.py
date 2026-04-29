@@ -12,6 +12,10 @@ polomer_cisla = dlha_ruc + 5
 hrubka_h = 3
 hrubka_s = 1
 
+uhol_minuta = 0
+uhol_hodina = 0
+uhol_sekunda = 0
+
 for i in range (1, 13):
      uhol = math.radians(i*30-90)
      x = s1+175*math.cos(uhol)
@@ -19,8 +23,8 @@ for i in range (1, 13):
      canvas.create_text (x, y, text = str (i), font = ("Arial", 16 , "bold"))
      canvas.create_oval (s1-200 , s2-200, s1+200, s2 +200 , outline = "black", width = 3)
 
-rucicka_h =  canvas.create_line(s1,s2 ,s1 + dlha_ruc * math.cos(uhol_minuta), s2 + dlha_ruc*math.sin(uhol_minuta),width= hrubka_h, fill = "black")
-rucicka_m =  canvas.create_line(s1, s2,s1 + kratka_ruc * math.cos(uhol_hodina),s2 + kratka_ruc * math.sin(uhol_hodina),width=hrubka_h, fill="black")
+rucicka_h =  canvas.create_line(s1,s2 ,s1 + dlha_ruc * math.cos(uhol_hodina), s2 + dlha_ruc*math.sin(uhol_hodina),width= hrubka_h, fill = "black")
+rucicka_m =  canvas.create_line(s1, s2,s1 + kratka_ruc * math.cos(uhol_minuta),s2 + kratka_ruc * math.sin(uhol_minuta),width=hrubka_h, fill="black")
 rucicka_s =  canvas.create_line(s1, s2,s1 + dlha_ruc * math.cos(uhol_sekunda),s2 + dlha_ruc * math.sin(uhol_sekunda),width=hrubka_s, fill="black")
 
 def draw():
@@ -29,6 +33,9 @@ def draw():
     uhol_minuta = math.radians(cas.minute * 6 - 90)
     uhol_hodina = math.radians(cas.hour * 30 + cas.minute * 0.5 - 90)
     uhol_sekunda = math.radians(cas.second * 6 - 90)
+    canvas.coords(rucicka_h, s1, s2, s1 + dlha_ruc * math.cos(uhol_hodina), s2 + dlha_ruc * math.sin(uhol_hodina))
+    canvas.coords(rucicka_m, s1, s2, s1 + kratka_ruc * math.cos(uhol_minuta), s2 + kratka_ruc * math.sin(uhol_minuta))
+    canvas.coords(rucicka_s, s1, s2, s1 + dlha_ruc * math.cos(uhol_sekunda), s2 + dlha_ruc * math.sin(uhol_sekunda))
     canvas.after(1000, draw)
 
 draw()
