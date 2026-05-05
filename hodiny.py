@@ -6,7 +6,7 @@ canvas.pack()
 
 s1 = 400
 s2 = 400
-kratka_ruc = 75
+kratka_ruc = 90
 dlha_ruc = 150
 polomer_cisla = dlha_ruc + 5
 hrubka_h = 3
